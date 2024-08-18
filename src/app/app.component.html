@@ -1,0 +1,49 @@
+<div class="main-container">
+  <kendo-spreadsheet
+    [sheets]="sheets"
+    activeSheet="Food Order"
+    [menuItems]="items"
+    style="height: 600px; width: 80%; margin: auto;">
+  </kendo-spreadsheet>
+  <div style="width: 80%; margin: 6px auto;">
+    <button kendoButton (click)="addRowClick()" themeColor="primary">
+      Add Row
+    </button>
+  </div>
+
+  <kendo-dialog *ngIf="showDialog" (close)="closeDialog()">
+    <kendo-dialog-titlebar>Add New Product</kendo-dialog-titlebar>
+
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="id">ID:</label>
+        <input id="id" [(ngModel)]="newRow.id" name="id" required />
+      </div>
+      <div>
+        <label for="product">Product:</label>
+        <input id="product" [(ngModel)]="newRow.product" name="product" required />
+      </div>
+      <div>
+        <label for="quantity">Quantity:</label>
+        <input id="quantity" type="number" [(ngModel)]="newRow.quantity" name="quantity" required />
+      </div>
+      <div>
+        <label for="price">Price:</label>
+        <input id="price" type="number" [(ngModel)]="newRow.price" name="price" required />
+      </div>
+      <div>
+        <label for="tax">Tax:</label>
+        <input id="tax" type="number" [(ngModel)]="newRow.tax" name="tax" required />
+      </div>
+      <div>
+        <label for="amount">Amount:</label>
+        <input id="amount" type="number" [(ngModel)]="newRow.amount" name="amount" required />
+      </div>
+
+      <kendo-dialog-actions>
+        <button kendoButton themeColor="primary" type="submit">Add Row</button>
+        <button kendoButton (click)="closeDialog()" type="button">Cancel</button>
+      </kendo-dialog-actions>
+    </form>
+  </kendo-dialog>
+</div>
